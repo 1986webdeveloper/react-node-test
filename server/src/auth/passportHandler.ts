@@ -10,7 +10,7 @@ const LocalStrategy = passportLocal.Strategy;
 const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 
-passport.use('local', new LocalStrategy({ usernameField: "email_id" }, (username, password, done) => {
+passport.use("local", new LocalStrategy({ usernameField: "email_id" }, (username, password, done) => {
   User.findOne({ email_id: username.toLowerCase() }, (err, user: any) => {
     if (err) { return done(err); }
     if (!user) {
@@ -27,7 +27,7 @@ passport.use('local', new LocalStrategy({ usernameField: "email_id" }, (username
 }));
 
 
-passport.use('jwt', new JwtStrategy(
+passport.use("jwt", new JwtStrategy(
   {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: JWT_SECRET

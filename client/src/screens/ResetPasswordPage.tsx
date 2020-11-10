@@ -25,7 +25,7 @@ const ResetPasswordPage = (props: any) => {
         if (form.checkValidity() === true) {
             setValidated(true);
             if (new_password === confirm_password) {
-                var data = { password: new_password, email_id: email, token };
+                let data = { password: new_password, email_id: email, token };
                 postData("/api/user/reset", data).then(result => {
                     if (result.status) {
                         setAlertType("success");

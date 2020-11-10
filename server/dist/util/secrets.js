@@ -21,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JWT_SECRET = exports.MONGODB_URI = void 0;
 const dotenv = __importStar(require("dotenv"));
-dotenv.config({ path: __dirname + '/../../.env' });
+dotenv.config({ path: __dirname + "/../../.env" });
 exports.MONGODB_URI = process.env["MONGODB_URI"];
 if (!exports.MONGODB_URI) {
     console.log("No mongo connection string. Set MONGODB_URI environment variable.");

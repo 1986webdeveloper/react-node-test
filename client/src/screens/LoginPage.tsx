@@ -22,7 +22,7 @@ const LoginPage = (props: any) => {
         const form: any = event.currentTarget;
         if (form.checkValidity() === true) {
             setValidated(true);
-            var data = { email_id, password };
+            let data = { email_id, password };
             postData("/api/user/login", data).then(result => {
                 if (result.status) {
                     setAlertType("success");

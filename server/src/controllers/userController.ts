@@ -5,16 +5,14 @@ import passport from "passport";
 import "../auth/passportHandler";
 import { User } from "../models/user";
 import { JWT_SECRET } from "../util/secrets";
-import { v4 as uuidv4 } from 'uuid';
-
-
+import { v4 as uuidv4 } from "uuid";
 export class UserController {
 
   public async registerUser(req: Request, res: Response): Promise<Response> {
     const { name, email_id, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-    var user = await User.findOne({ email_id: email_id });
+    const user = await User.findOne({ email_id: email_id });
     if (user && user.email_id) {
       return res.status(201).send({ status: false, message: "Email Id already exists!" });
     }
@@ -44,8 +42,8 @@ export class UserController {
 
   public async forgotPassword(req: Request, res: Response): Promise<Response> {
     const { email_id } = req.body;
-    var token: string = uuidv4();
-    var user = await User.findOne({ email_id: email_id });
+    const token: string = uuidv4();
+    const user = await User.findOne({ email_id: email_id });
     if (user && user.email_id) {
       user.reset_token = token;
       user.save();
@@ -61,7 +59,7 @@ export class UserController {
     const { email_id, token, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-    var user = await User.findOne({ email_id: email_id });
+    const user = await User.findOne({ email_id: email_id });
     if (user && user.email_id) {
       if (user.reset_token && user.reset_token == token) {
         user.reset_token = "";

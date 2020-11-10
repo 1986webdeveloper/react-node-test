@@ -20,7 +20,7 @@ const RegisterPage = (props: any) => {
         const form: any = event.currentTarget;
         if (form.checkValidity() === true) {
             setValidated(true);
-            var data = { name, email_id, password };
+            let data = { name, email_id, password };
             postData("/api/user/register", data).then(result => {
                 if (result.status) {
                     setAlertType("success");

@@ -20,7 +20,7 @@ const ForgotPasswordPage = (props: any) => {
         const form: any = event.currentTarget;
         if (form.checkValidity() === true) {
             setValidated(true);
-            var data = { email_id };
+            let data = { email_id };
             postData("/api/user/forgot", data).then(result => {
                 if (result.status) {
                     setAlertType("success");

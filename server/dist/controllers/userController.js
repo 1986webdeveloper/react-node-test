@@ -44,7 +44,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, email_id, password } = req.body;
             const hashedPassword = bcrypt_nodejs_1.default.hashSync(password, bcrypt_nodejs_1.default.genSaltSync(10));
-            var user = yield user_1.User.findOne({ email_id: email_id });
+            const user = yield user_1.User.findOne({ email_id: email_id });
             if (user && user.email_id) {
                 return res.status(201).send({ status: false, message: "Email Id already exists!" });
             }
@@ -74,8 +74,8 @@ class UserController {
     forgotPassword(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email_id } = req.body;
-            var token = uuid_1.v4();
-            var user = yield user_1.User.findOne({ email_id: email_id });
+            const token = uuid_1.v4();
+            const user = yield user_1.User.findOne({ email_id: email_id });
             if (user && user.email_id) {
                 user.reset_token = token;
                 user.save();
@@ -91,7 +91,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { email_id, token, password } = req.body;
             const hashedPassword = bcrypt_nodejs_1.default.hashSync(password, bcrypt_nodejs_1.default.genSaltSync(10));
-            var user = yield user_1.User.findOne({ email_id: email_id });
+            const user = yield user_1.User.findOne({ email_id: email_id });
             if (user && user.email_id) {
                 if (user.reset_token && user.reset_token == token) {
                     user.reset_token = "";

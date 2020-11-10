@@ -12,7 +12,7 @@ const secrets_1 = require("../util/secrets");
 const LocalStrategy = passport_local_1.default.Strategy;
 const JwtStrategy = passport_jwt_1.default.Strategy;
 const ExtractJwt = passport_jwt_1.default.ExtractJwt;
-passport_1.default.use('local', new LocalStrategy({ usernameField: "email_id" }, (username, password, done) => {
+passport_1.default.use("local", new LocalStrategy({ usernameField: "email_id" }, (username, password, done) => {
     user_1.User.findOne({ email_id: username.toLowerCase() }, (err, user) => {
         if (err) {
             return done(err);
@@ -31,7 +31,7 @@ passport_1.default.use('local', new LocalStrategy({ usernameField: "email_id" },
         });
     });
 }));
-passport_1.default.use('jwt', new JwtStrategy({
+passport_1.default.use("jwt", new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: secrets_1.JWT_SECRET
 }, function (jwtToken, done) {

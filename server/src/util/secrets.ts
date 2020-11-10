@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-dotenv.config({ path: __dirname + '/../../.env' });
+dotenv.config({ path: __dirname + "/../../.env" });
 export const MONGODB_URI = process.env["MONGODB_URI"];
 
 if (!MONGODB_URI) {

@@ -1,4 +1,4 @@
-# Nodejs Backend with Mongo DB
+# Reactjs Frontend
 
 To run the application first clone the repository
 
